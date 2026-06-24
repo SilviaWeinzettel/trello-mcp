@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(echo \"npm: $\\(npm -v 2>/dev/null || echo MISSING\\)\")",
+      "Bash(command -v npx)",
+      "Bash(echo \"npx: $\\(command -v npx >/dev/null && echo yes || echo MISSING\\)\")",
+      "Bash(python3 -m py_compile trello_mcp_server.py)"
+    ]
+  }
+}

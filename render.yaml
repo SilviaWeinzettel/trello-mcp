@@ -1,0 +1,19 @@
+# Render.com blueprint — deploys the read-only Trello MCP server with no
+# local toolchain required. Push this repo to GitHub, then in Render:
+#   New + → Blueprint → pick this repo. Render reads this file.
+# After it deploys, set the secret env vars (marked sync: false) in the dashboard.
+services:
+  - type: web
+    name: trello-mcp
+    runtime: python
+    plan: free
+    pythonVersion: "3.11"
+    buildCommand: pip install -r requirements.txt
+    startCommand: python trello_mcp_server.py
+    envVars:
+      - key: TRELLO_API_KEY
+        sync: false          # set in dashboard — your Trello API key
+      - key: TRELLO_TOKEN
+        sync: false          # set in dashboard — your read-only Trello token
+      - key: MCP_PATH
+        sync: false          # set to an unguessable path, e.g. /mcp-7f3a9c2e
